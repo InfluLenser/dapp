@@ -15,7 +15,7 @@ function Step({
         <span className='flex items-center px-6 py-4 text-sm font-medium'>
           {status === 'done' && (
             <>
-              <span className='flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-indigo-700 group-hover:bg-indigo-800'>
+              <span className='flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-il-green-600 group-hover:bg-il-green-700'>
                 <svg
                   className='h-6 w-6 text-white'
                   xmlns='http://www.w3.org/2000/svg'
@@ -34,10 +34,10 @@ function Step({
           )}
           {status === 'inprogress' && (
             <span className='flex items-center animate-pulse'>
-              <span className='flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-indigo-600'>
-                <span className='text-indigo-600'>0{order}</span>
+              <span className='flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border-2 border-il-green-600'>
+                <span className='text-il-green-700'>0{order}</span>
               </span>
-              <span className='ml-4 text-sm font-medium text-indigo-600'>{title}</span>
+              <span className='ml-4 text-sm font-medium text-il-green-700'>{title}</span>
             </span>
           )}
           {status === 'todo' && (
