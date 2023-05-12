@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import TalentLayerContext from '../../context/talentLayer';
-import TalentLayerIdForm from '../Form/TalentLayerIdForm';
+import SearchForm from '../Form/SearchForm';
 
 function CreateId() {
   const { user } = useContext(TalentLayerContext);
@@ -22,7 +22,7 @@ function CreateId() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
 
-            <TalentLayerIdForm />
+            <SearchForm />
           </div>
         </div>
       </div>
