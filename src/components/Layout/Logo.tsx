@@ -2,9 +2,9 @@ import Link from 'next/link';
 
 function Logo() {
   return (
-    <h1 className='text-2xl text-white'>
+    <h1 className='text-2xl text-il-green-600'>
       <Link href='/'>
-        TL<span className='text-indigo-300'>indie</span>
+        Influ<span className='text-il-green-900'>Lenser</span>
       </Link>
     </h1>
   );

@@ -22,7 +22,7 @@ function SideMenu() {
     <nav className='space-y-1 px-2'>
       {navigation.map(item => (
         <SideLink key={item.name} href={item.href}>
-          <item.icon className='mr-3 h-5 w-5 flex-shrink-0 text-indigo-300' aria-hidden='true' />
+          <item.icon className='mr-3 h-5 w-5 flex-shrink-0 text-il-green-900' aria-hidden='true' />
           {item.name}
         </SideLink>
       ))}

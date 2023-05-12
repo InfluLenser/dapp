@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 function SideLink({ children, href }: { children: React.ReactNode; href: string }) {
   const router = useRouter();
   let className =
-    router.asPath === href ? 'bg-indigo-800 text-white' : 'text-indigo-100 hover:bg-indigo-700';
+    router.asPath === href ? 'bg-il-green-500 text-il-green-800' : 'text-il-green-800 hover:bg-il-green-300';
 
   className += ' group flex items-center px-2 py-2 text-base font-medium rounded-md';
 

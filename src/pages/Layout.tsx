@@ -40,7 +40,7 @@ function Layout({ children, className }: ContainerProps) {
                 leave='transition ease-in-out duration-300 transform'
                 leaveFrom='translate-x-0'
                 leaveTo='-translate-x-full'>
-                <Dialog.Panel className='relative flex w-full max-w-xs flex-1 flex-col bg-indigo-700 pt-5 pb-4'>
+                <Dialog.Panel className='relative flex w-full max-w-xs flex-1 flex-col bg-bubble-gum pt-5 pb-4'>
                   <Transition.Child
                     as={Fragment}
                     enter='ease-in-out duration-300'
@@ -75,7 +75,7 @@ function Layout({ children, className }: ContainerProps) {
         </Transition.Root>
 
         <div className='hidden md:fixed md:inset-y-0 md:flex md:w-64 md:flex-col'>
-          <div className='flex flex-grow flex-col overflow-y-auto bg-indigo-700 pt-5'>
+          <div className='flex flex-grow flex-col overflow-y-auto bg-il-lightgreen-main pt-5'>
             <div className='flex flex-shrink-0 items-center px-4'>
               <Logo />
             </div>
