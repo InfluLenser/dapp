@@ -8,6 +8,7 @@ function Home() {
           <div className='flex flex-shrink-0 items-center px-4 object-cover'>
             <Logo />
           </div>
+          
           <nav className='md:ml-auto flex flex-wrap items-center text-base justify-center'>
             <a className='mr-5 hover:text-gray-900'>Dashboard</a>
             <a className='mr-5 hover:text-gray-900'>Get Sponsored</a>
