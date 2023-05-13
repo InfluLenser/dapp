@@ -15,15 +15,13 @@ import useUserById from '../../hooks/useUserById';
 import { SkillsInput } from './skills-input';
 import { getUserByAddress } from '../../queries/users';
 import { delegateUpdateProfileData } from '../request';
+import { ContentFocus, ProfileOwnedByMe, useCreatePost } from '@lens-protocol/react-web';
+import { ShareToLens, Theme, Size } from '@lens-protocol/widgets-react';
+import Link from 'next/link';
+import { useFormikContext } from 'formik';
 
 interface IFormValues {
-  title?: string;
-  role?: string;
-  image_url?: string;
-  video_url?: string;
-  name?: string;
-  about?: string;
-  skills?: string;
+  text?: string;
 }
 
 const validationSchema = Yup.object({
@@ -39,105 +37,63 @@ function PostForm({ callback }: { callback?: () => void }) {
     chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string),
   });
 
+  // const { execute: create, error, isPending } = useCreatePost({ user, upload: uploadJson });
+
   if (!user?.id) {
     return <Loading />;
   }
 
   const initialValues: IFormValues = {
-    title: userDescription?.title || '',
-    role: userDescription?.role || '',
-    image_url: userDescription?.image_url || '',
-    video_url: userDescription?.video_url || '',
-    name: userDescription?.name || '',
-    about: userDescription?.about || '',
-    skills: userDescription?.skills_raw || '',
+    text: '',
   };
 
-  const onSubmit = async (
+  const onSubmit = (
     values: IFormValues,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void; resetForm: () => void },
-  ) => {
-    // if (user && provider && signer) {
-    //   try {
-    //     const cid = await postToIPFS(
-    //       JSON.stringify({
-    //         title: values.title,
-    //         role: values.role,
-    //         image_url: values.image_url,
-    //         video_url: values.video_url,
-    //         name: values.name,
-    //         about: values.about,
-    //         skills: values.skills,
-    //       }),
-    //     );
-    //     const getUser = await getUserByAddress(user.address);
-    //     const delegateAddresses = getUser.data?.data?.users[0].delegates;
-    //     let tx;
-    //     if (
-    //       process.env.NEXT_PUBLIC_ACTIVE_DELEGATE &&
-    //       delegateAddresses &&
-    //       delegateAddresses.indexOf(config.delegation.address.toLowerCase()) != -1
-    //     ) {
-    //       const response = await delegateUpdateProfileData(user.id, user.address, cid);
-    //       tx = response.data.transaction;
-    //     } else {
-    //       const contract = new ethers.Contract(
-    //         config.contracts.talentLayerId,
-    //         TalentLayerID.abi,
-    //         signer,
-    //       );
-    //       tx = await contract.updateProfileData(user.id, cid);
-    //     }
-    //     await createMultiStepsTransactionToast(
-    //       {
-    //         pending: 'Updating profile...',
-    //         success: 'Congrats! Your profile has been updated',
-    //         error: 'An error occurred while updating your profile',
-    //       },
-    //       provider,
-    //       tx,
-    //       'user',
-    //       cid,
-    //     );
-    //     if (callback) {
-    //       callback();
-    //     }
-    //     setSubmitting(false);
-    //   } catch (error) {
-    //     showErrorTransactionToast(error);
-    //   }
-    // } else {
-    //   openConnectModal();
-    // }
-  };
+  ) => {};
 
   return (
-    <Formik
-      initialValues={initialValues}
-      enableReinitialize={true}
-      onSubmit={onSubmit}
-      validationSchema={validationSchema}>
-      {({ isSubmitting }) => (
-        <Form>
-          <div className='grid grid-cols-1 gap-6 border border-gray-200 rounded-md p-8'>
-            <label className='block'>
-              <Field
-                as='textarea'
-                type='text'
-                id='text'
-                name='text'
-                className='mt-1 h-40 block w-full rounded-md border-gray-300 shadow-sm focus:border-il-green-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'
-                placeholder='Write your post'
-              />
-            </label>
+    <>
+      <Formik
+        initialValues={initialValues}
+        enableReinitialize={true}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}>
+        {({ isSubmitting }) => {
+          const { values } = useFormikContext();
+          return (
+            <Form>
+              <div className='grid grid-cols-1 gap-6 border border-gray-200 rounded-md p-8'>
+                <label className='block'>
+                  <Field
+                    as='textarea'
+                    type='text'
+                    id='text'
+                    name='text'
+                    className='mt-1 h-40 block w-full rounded-md border-gray-300 shadow-sm focus:border-il-green-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'
+                    placeholder='Write your post'
+                  />
+                </label>
 
-            <div className='flex justify-end'>
-              <SubmitButton isSubmitting={isSubmitting} label='Post' />
-            </div>
-          </div>
-        </Form>
-      )}
-    </Formik>
+                <div className='flex justify-end'>
+                  <Link
+                    className='text-center border
+            border-il-green-800
+            text-il-green-800
+            bg-il-lightgreen-200
+            hover:bg-il-green-main
+            duration-100 px-5 py-2 rounded-lg'
+                    href={`https://testnet.lenster.xyz/?text=${}&url=https://mycoolapp.xyz&via=MyCoolApp&hashtags=lens,web3`}
+                    target='_blank'>
+                    Post
+                  </Link>
+                </div>
+              </div>
+            </Form>
+          );
+        }}
+      </Formik>
+    </>
   );
 }
 
