@@ -39,24 +39,22 @@ function UserItem({ user }: { user: IUser }) {
             </div>
             <Stars rating={Number(user.rating)} numReviews={user.userStats.numReceivedReviews} />
 
-            <div className='flex flex-row gap-4 justify-end items-center'>
-              <Link
-                className='text-indigo-600 bg-indigo-50 hover:bg-indigo-500 hover:text-white px-5 py-2 rounded-lg'
-                href={`/profile/${user.id}`}>
-                View profile
-              </Link>
-              {currentUser?.id === user.id && (
-                <Link
-                  className='text-green-600 bg-green-50 hover:bg-green-500 hover:text-white px-5 py-2 rounded-lg'
-                  href={`/profile/edit`}>
-                  Edit profile
-                </Link>
-              )}
-            </div>
-          </div>
+        <div className='flex flex-row gap-4 justify-end items-center'>
+          <Link
+            className='border border-il-green-800 text-il-green-800 bg-il-lightgreen-200 hover:bg-il-green-main duration-100 px-5 py-2 rounded-lg'
+            href={`/profile/${user.id}`}>
+            View profile
+          </Link>
+          {currentUser?.id === user.id && (
+            <Link
+              className='px-5 py-2 border border-il-green-600 rounded-lg hover:text-il-green-600 hover:bg-white text-white bg-il-green-700'
+              href={`/profile/edit`}>
+              Edit profile
+            </Link>
+          )}
         </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 }
 

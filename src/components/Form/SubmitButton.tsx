@@ -38,7 +38,7 @@ function SubmitButton({
       ) : isConnected ? (
         <button
           type='submit'
-          className='px-5 py-2 border border-indigo-600 rounded-md hover:text-indigo-600 hover:bg-white text-white bg-indigo-700'>
+          className='border border-il-green-800 text-il-green-800 bg-il-lightgreen-200 hover:bg-il-green-main duration-100 px-5 py-2 rounded-lg'>
           {label}
         </button>
       ) : (

@@ -17,7 +17,7 @@ function Talents() {
   return (
     <div className='max-w-7xl mx-auto text-gray-900 sm:px-4 lg:px-0'>
       <p className='text-5xl font-medium tracking-wider mb-8'>
-        Find <span className='text-il-green-600'>InfluLENSers </span>
+        Find <span className='bg-clip-text text-transparent bg-gradient-to-r from-il-green-700 to-il-green-600'>InfluLENSers </span>
       </p>
       <p className='text-2xl font-medium tracking-wider mb-8'>
       Ready to find the next social media star ⭐ to help spread the word about your awesome product 😎? Search for influLENSers and view their profiles here.
@@ -49,8 +49,7 @@ function Talents() {
         <div className='flex justify-center items-center gap-10 flex-col pb-5'>
           <button
             type='submit'
-            className={`px-5 py-2 mt-5 content-center border border-tl-green-600 rounded-full text-tl-green-600 
-              hover:text-white hover:bg-tl-green-700
+            className={`px-5 py-2 mt-5 content-center border border-il-green-600 rounded-full text-il-green-700 hover:text-il-green-800 hover:bg-il-green-500 duration-100
             `}
             disabled={!hasMoreData}
             onClick={() => loadMore()}>
