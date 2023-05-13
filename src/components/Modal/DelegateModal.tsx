@@ -58,7 +58,7 @@ function DelegateModal() {
       {process.env.NEXT_PUBLIC_ACTIVE_DELEGATE === 'true' && (
         <button
           onClick={() => setShow(true)}
-          className='block text-blue-600 bg-red-50 hover:bg-green-500 hover:text-white rounded-lg px-5 py-2.5 text-center'
+          className='border border-il-green-main text-il-green-800 bg-il-green-main hover:bg-il-green-700 hover:text-il-lightgreen-100 duration-100 px-5 py-2 rounded-lg'
           type='button'
           data-modal-toggle='defaultModal'>
           Activate Delegation
