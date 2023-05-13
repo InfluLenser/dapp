@@ -7,13 +7,14 @@ import * as Yup from 'yup';
 import { config } from '../../config';
 import TalentLayerContext from '../../context/talentLayer';
 import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
-import { createMultiStepsTransactionToast, showErrorTransactionToast } from '../../utils/toast';
+import { createTransactionToast, showErrorTransactionToast } from '../../utils/toast';
 import Loading from '../Loading';
 import SubmitButton from './SubmitButton';
 import { useRouter } from 'next/router';
-import { deploySafe } from '../../contracts/safe/Organisations';
-import { postToIPFS } from '../../utils/ipfs';
+import { proposeSafeTransaction } from '../../contracts/safe/Organisations';
 import { getUserIdsByAddresses } from '../../queries/users';
+import { generateSelector } from '../../utils/web3';
+import { IUser } from '../../types';
 
 interface IFormValues {
   handle?: string;
@@ -58,74 +59,81 @@ function CreateOrganizationForm({ callback }: { callback?: () => void }) {
 
         const handlePrice = await contract.getHandlePrice(values.handle);
 
-        console.log('values: ', values);
-        const safeAddress = await deploySafe(values.members, signer, 1);
+        // Create Multisig Safe
+        const safeAddress = '0x1ea68C3A0e1F328343fFF5f16528B297DEa4E4dB';
+        // const safeAddress = await deploySafe(values.members, signer, 1);
 
-        // TODO Then mind ID for organization
+        if (safeAddress) {
+          // TODO Fund the safe
 
-        const mintTx = await contract.mintForAddress(
-          safeAddress,
-          process.env.NEXT_PUBLIC_PLATFORM_ID,
-          values.handle,
-          {
-            value: handlePrice,
-          },
-        );
+          // Mint ID for organization
+          // const mintTx = await contract.mintForAddress(
+          //   safeAddress,
+          //   process.env.NEXT_PUBLIC_PLATFORM_ID,
+          //   values.handle,
+          //   {
+          //     value: handlePrice,
+          //   },
+          // );
+          //
+          const newId = '88';
+          // const newId = await createMultiStepsTransactionToast(
+          //   {
+          //     pending: 'Creating organization profile...',
+          //     success: 'Congrats! Your organization has been created',
+          //     error: 'An error occurred while creating your organization',
+          //   },
+          //   provider,
+          //   mintTx,
+          //   'user',
+          // );
+          const memberIds = await getMembersIds(values.members);
 
-        const newId = await createMultiStepsTransactionToast(
-          {
-            pending: 'Creating organization profile...',
-            success: 'Congrats! Your organization has been created',
-            error: 'An error occurred while creating your organization',
-          },
-          provider,
-          mintTx,
-          'user',
-        );
+          // Create ipfs metaData
+          const cid = 'QmWuF9qodtLgP4e6dbQLESiBpotqMyqCRoTMW7CeQaC9qT';
+          // const cid = await postToIPFS(
+          //   JSON.stringify({
+          //     // title: values.title,
+          //     // role: values.role,
+          //     // image_url: values.image_url,
+          //     // video_url: values.video_url,
+          //     // name: values.name,
+          //     // about: values.about,
+          //     // skills: values.skills,
+          //     // TOTO get user ids here
+          //     members: memberIds,
+          //   }),
+          // );
+          console.log('cid', cid);
 
-        const userIds = await getUserIdsByAddresses(values.members);
-        console.log('userIds: ', userIds);
+          // Update metaData using multisig
+          const functionSelector = generateSelector(
+            'updateProfileData(uint256,string)',
+            TalentLayerID.abi,
+            TalentLayerID.bytecode,
+            [newId, cid],
+          );
 
-        // TODO Then create ipfs data
-        const cid = await postToIPFS(
-          JSON.stringify({
-            // title: values.title,
-            // role: values.role,
-            // image_url: values.image_url,
-            // video_url: values.video_url,
-            // name: values.name,
-            // about: values.about,
-            // skills: values.skills,
-            // TOTO get user ids here
-            members: userIds.response.data.data.users,
-          }),
-        );
+          console.log('functionSelector', functionSelector);
 
-        const contractWithSafe = new ethers.Contract(
-          config.contracts.talentLayerId,
-          TalentLayerID.abi,
-          signer,
-        );
+          const updateTx = await proposeSafeTransaction(
+            safeAddress,
+            config.contracts.talentLayerId,
+            signer,
+            '0',
+            functionSelector,
+          );
 
-        const updateTx = await contract.updateProfileData(safeAddress, cid);
-        await createMultiStepsTransactionToast(
-          {
-            pending: 'Updating organization...',
-            success: 'Congrats! Your organization has been updated',
-            error: 'An error occurred while updating your organization',
-          },
-          provider,
-          updateTx,
-          'user',
-          cid,
-        );
+          if (updateTx) {
+            createTransactionToast('Your safe transaction has been proposed', updateTx);
+          } else {
+            throw new Error('Transaction failed');
+          }
 
-        // TODO Then update safe metadata with members
-        // updateProfileData
-
-        // TODO Then redirect to adding users
-        if (newId) {
-          router.push('/organizations/edit' + newId);
+          // Then redirect to organization dashboard
+          if (newId) {
+            router.push('/organizations/edit' + newId);
+          }
         }
 
         setSubmitting(false);
@@ -136,6 +144,16 @@ function CreateOrganizationForm({ callback }: { callback?: () => void }) {
       openConnectModal();
     }
   };
+
+  async function getMembersIds(members: string[]) {
+    const response = await getUserIdsByAddresses(members);
+    const users: IUser[] = response.data.data.users;
+    const memberIds: string[] = [];
+    users.forEach(user => {
+      memberIds.push(user.id);
+    });
+    return memberIds;
+  }
 
   return (
     <Formik
