@@ -63,7 +63,7 @@ function ServiceDetail({ service }: { service: IService }) {
             <div className=' border-t border-gray-100 pt-4 w-full'>
               {service.seller && (
                 <Link className='text-sm text-gray-500 mt-4' href={`/profile/${service.seller.id}`}>
-                  Job handle by <span className='text-indigo-600'>{service.seller.handle}</span>
+                  Job handle by <span className='text-il-lightgreen-800'>{service.seller.handle}</span>
                 </Link>
               )}
               <div className='text-sm text-gray-500 mt-4'>

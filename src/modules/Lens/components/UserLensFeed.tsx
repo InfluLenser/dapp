@@ -77,7 +77,7 @@ function UserLensFeed({ lensUser }: IProps) {
                       </span>
                       <span>{item.stats.totalUpvotes}</span>
                     </div>
-                    <span className='font-medium text-blue-400 w-full text-right'>
+                    <span className='font-medium text-il-lightgreen-800 w-full text-right'>
                       Read it on Lenster
                     </span>
                   </div>
