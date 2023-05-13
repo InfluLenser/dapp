@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { IService, IUser, ServiceStatusEnum } from '../types';
+import { renderTokenAmountFromConfig } from '../utils/conversion';
 import { formatDate } from '../utils/dates';
 import ServiceStatus from './ServiceStatus';
 import { useState } from 'react';
+import PostModal from './Modal/PostModal';
 
 function UserServiceItem({ user, service }: { user: IUser; service: IService }) {
   const isBuyer = user?.id === service.buyer.id;
@@ -59,21 +61,7 @@ function UserServiceItem({ user, service }: { user: IUser; service: IService }) 
               )}
             </Link>
 
-            <div
-              className='flex-1 text-center border
-            border-il-green-800
-            text-il-green-800
-            bg-il-lightgreen-200
-            hover:bg-il-green-main
-            duration-100 px-5 py-2 rounded-lg hover:cursor-pointer'
-              onClick={() => setShowModal(true)}>
-              Post
-              {isBuyer && service.status == ServiceStatusEnum.Opened && (
-                <div className='inline-flex absolute -top-2 -right-2 justify-center items-center w-6 h-6 text-xs font-bold text-white bg-indigo-700 rounded-full border-2 border-white'>
-                  {service.proposals.length}
-                </div>
-              )}
-            </div>
+            <PostModal />
           </div>
         </div>
       </div>
