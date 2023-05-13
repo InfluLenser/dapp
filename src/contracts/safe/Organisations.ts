@@ -27,7 +27,7 @@ export async function deploySafe(
   };
 
   //TODO check if this is compulsory
-  const saltNonce = '054584';
+  const saltNonce = Date.now().toString();
 
   // Predict deployed address
   const predictedDeploySafeAddress = await safeFactory.predictSafeAddress(
@@ -48,7 +48,7 @@ export async function deploySafe(
     callback,
   });
 
-  console.log('Deployed Safe:', safe.getAddress());
+  console.log('Deployed Safe:', await safe.getAddress());
   return safe.getAddress();
 }
 
