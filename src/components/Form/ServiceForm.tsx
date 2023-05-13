@@ -171,7 +171,7 @@ function ServiceForm() {
                 id='title'
                 name='title'
                 className='mt-1 mb-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'
-                placeholder=''
+                placeholder='Sponsored post for Snazzy Sunglasses Co.'
               />
               <span className='text-red-500'>
                 <ErrorMessage name='title' />
@@ -185,7 +185,7 @@ function ServiceForm() {
                 id='about'
                 name='about'
                 className='mt-1 mb-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'
-                placeholder=''
+                placeholder='Please make a post about our new spring sunglasses collection, including photos from our website. Seeking a social media account with at least 400 followers and high engagement.'
               />
               <span className='text-red-500'>
                 <ErrorMessage name='about' />
@@ -199,7 +199,7 @@ function ServiceForm() {
                 id='keywords'
                 name='keywords'
                 className='mt-1 mb-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'
-                placeholder='keyword1, keyword2...'
+                placeholder='advertising, social media marketing...'
               />
               <span className='text-red-500'>
                 <ErrorMessage name='keywords' />
