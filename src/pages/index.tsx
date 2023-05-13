@@ -26,7 +26,7 @@ function Home() {
       </h1>
       <p className="mb-8 text-2xl leading-relaxed">Whether you are a DAO, clothing company, or community organization, sponsorship marketing can be a powerful tool to spread your message around the world.</p>
       <div className="flex justify-center">
-        <button className="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">Hire Influencers</button>
+        <button className="inline-flex text-il-green-800 bg-il-green-main hover:bg-il-green-700 hover:text-il-lightgreen-100 duration-100 border-0 py-2 px-6 focus:outline-none rounded text-lg">Hire Influencers</button>
         <button className="ml-4 inline-flex text-gray-700 bg-gray-200 border-0 py-2 px-6 focus:outline-none hover:bg-gray-300 rounded text-lg">Get Paid for Posts</button>
       </div>
     </div>
@@ -38,14 +38,14 @@ function Home() {
 <section className="text-gray-700 body-font border-t border-gray-200">
   <div className="container px-5 py-24 mx-auto">
     <div className="flex flex-col text-center w-full mb-20">
-      <h2 className="text-xs text-green-500 tracking-widest font-medium title-font mb-1">INFLULENSERS ARE HARD AT WORK</h2>
+      <h2 className="text-xs tracking-widest font-medium title-font mb-1 bg-clip-text text-transparent bg-gradient-to-r from-il-green-700 to-il-green-600">INFLULENSERS ARE HARD AT WORK</h2>
       <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900">Influencer marketing, tailored for your organization</h1>
     </div>
     <div className="flex flex-wrap -m-4">
       <div className="p-4 md:w-1/3">
         <div className="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
           <div className="flex items-center mb-3">
-            <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-green-500 text-white flex-shrink-0">
+            <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-il-green-600 text-white flex-shrink-0">
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
               </svg>
@@ -54,7 +54,7 @@ function Home() {
           </div>
           <div className="flex-grow">
             <p className="leading-relaxed text-base">Trying to rally your community to vote on key initiatives? Ask influencers for help spreading the word.</p>
-            <a className="mt-3 text-green-500 inline-flex items-center">Post a Sponsorship Opportnity
+            <a className="mt-3 text-il-green-600 inline-flex items-center">Post a Sponsorship Opportnity
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                 <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
@@ -65,7 +65,7 @@ function Home() {
       <div className="p-4 md:w-1/3">
         <div className="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
           <div className="flex items-center mb-3">
-            <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-green-500 text-white flex-shrink-0">
+            <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-il-green-600 text-white flex-shrink-0">
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
@@ -75,7 +75,7 @@ function Home() {
           </div>
           <div className="flex-grow">
             <p className="leading-relaxed text-base">Reach out to niche clothing, sports, beauty, nomad, and other influencers. Sell products with hyper-targeted influencer marketing.</p>
-            <a className="mt-3 text-green-500 inline-flex items-center">Post a Sponsorship Opportnity
+            <a className="mt-3 text-il-green-600 inline-flex items-center">Post a Sponsorship Opportnity
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                 <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
@@ -86,7 +86,7 @@ function Home() {
       <div className="p-4 md:w-1/3">
         <div className="flex rounded-lg h-full bg-gray-100 p-8 flex-col">
           <div className="flex items-center mb-3">
-            <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-green-500 text-white flex-shrink-0">
+            <div className="w-8 h-8 mr-3 inline-flex items-center justify-center rounded-full bg-il-green-600 text-white flex-shrink-0">
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
                 <circle cx="6" cy="6" r="3"></circle>
                 <circle cx="6" cy="18" r="3"></circle>
@@ -97,7 +97,7 @@ function Home() {
           </div>
           <div className="flex-grow">
             <p className="leading-relaxed text-base">Publicize social good causes by tapping into influencer's audiences. Grow your movement alongside loyal followers.</p>
-            <a className="mt-3 text-green-500 inline-flex items-center">Post a Sponsorship Opportnity
+            <a className="mt-3 text-il-green-600 inline-flex items-center">Post a Sponsorship Opportnity
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
                 <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
@@ -118,7 +118,7 @@ function Home() {
         <div className="flex-grow">
           <h2 className="text-gray-900 text-2xl title-font font-medium mb-3">🌿 Lens Protocol Native Posts 🌿</h2>
           <p className="leading-relaxed text-base">Right after being hired for a sponsorship gig, InfluLENSers can immediatley post on Lens - all from their influencer dashboard.</p>
-          <a className="mt-3 text-green-500 inline-flex items-center">Learn About Lens
+          <a className="mt-3 text-il-green-600 inline-flex items-center">Learn About Lens
           </a>
         </div>
       </div>
@@ -127,7 +127,7 @@ function Home() {
         <div className="flex-grow">
           <h2 className="text-gray-900 text-2xl title-font font-medium mb-3">🍀 Hiring Powered by TalentLayer 🦝</h2>
           <p className="leading-relaxed text-base">Have peace of mind with on-chain escrow and job reviews. Your influencer marketing posts are broadcast to TalentLayer's network of interoperable hiring platforms.</p>
-          <a className="mt-3 text-green-500 inline-flex items-center">Learn About TalentLayer
+          <a className="mt-3 text-il-green-600 inline-flex items-center">Learn About TalentLayer
           </a>
         </div>
       </div>
@@ -266,7 +266,7 @@ function Home() {
         <div className="flex-grow">
           <h2 className="text-gray-900 text-5xl title-font font-medium mb-3">View on Github</h2>
           <p className="leading-relaxed text-base">Our code is fully open-source and we'd love your feedback! Find us on Github.</p>
-          <button className="flex mx-auto mt-16 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">Let's Go</button>
+          <button className="flex mx-auto mt-16 border-0 py-2 px-8 focus:outline-none rounded text-lg text-il-green-800 bg-il-green-500 hover:bg-il-green-700 hover:text-il-lightgreen-100 duration-100">Let's Go</button>
         </div>
       </div>
     </div>P
