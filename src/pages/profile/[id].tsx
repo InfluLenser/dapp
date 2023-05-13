@@ -22,7 +22,7 @@ function Profile() {
         <>
           <p className='text-5xl font-medium tracking-wider mb-8'>
             Profile{' '}
-            <span className='bg-clip-text text-transparent bg-gradient-to-r from-il-green-800 to-il-green-600'>
+            <span className='bg-clip-text text-transparent bg-gradient-to-r from-il-green-700 to-il-green-600'>
               {user.handle}
             </span>
           </p>
