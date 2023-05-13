@@ -20,7 +20,7 @@ function UserLensProfile({ lensUser }: IProps) {
             />
           )}
           <div className='text-center text-gray-900 text-lg font-medium'>{lensUser?.name}</div>
-          <div className='text-center text-green-500 text-sm'>@{lensUser?.handle}</div>
+          <div className='text-center text-il-lightgreen-800 text-sm'>@{lensUser?.handle}</div>
           <span id='lens-follow-small' data-handle={'nader.lens'} />
           <div className='px-2 text-center mt-2 font-light text-sm'>
             <p>
@@ -31,7 +31,7 @@ function UserLensProfile({ lensUser }: IProps) {
             <a
               href={`https://lenster.xyz/u/${lensUser.handle}`}
               target='_blank'
-              className='bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded'>
+              className='text-il-green-800 bg-il-green-main hover:bg-il-green-700 hover:text-il-lightgreen-100 duration-100 font-bold py-2 px-4 rounded'>
               Follow me
             </a>
           </div>

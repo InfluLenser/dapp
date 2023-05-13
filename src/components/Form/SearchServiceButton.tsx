@@ -51,7 +51,7 @@ function SearchServiceButton(props?: { value?: string }) {
         <div className='sm:px-4 flex flex-row  sm:space-x-4 justify-between items-center'>
           <button
             type='submit'
-            className='px-5 py-2 border border-il-green-300 rounded-md text-il-green-500 bg-il-green-800 hover:border-il-green-800 hover:text-il-green-800 hover:bg-il-lightgreen-200 duration-100'>
+            className='px-5 py-2 border border-il-green-700 text-il-green-800 bg-il-green-main hover:bg-il-green-700 hover:text-il-lightgreen-100 duration-100 rounded-md hover:border-il-green-800'>
             Search
           </button>
         </div>
