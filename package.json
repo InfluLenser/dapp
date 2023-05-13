@@ -6,6 +6,8 @@
     "@enzoferey/ethers-error-parser": "^0.2.2",
     "@headlessui/react": "^1.7.3",
     "@heroicons/react": "^2.0.12",
+    "@lens-protocol/react-web": "^1.0.1",
+    "@lens-protocol/widgets-react": "^0.0.14",
     "@safe-global/api-kit": "^1.1.0",
     "@safe-global/protocol-kit": "^1.0.0",
     "@safe-global/safe-core-sdk-types": "^2.0.0",
