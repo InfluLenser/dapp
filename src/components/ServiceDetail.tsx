@@ -63,7 +63,7 @@ function ServiceDetail({ service }: { service: IService }) {
             <div className=' border-t border-gray-100 pt-4 w-full'>
               {service.seller && (
                 <Link className='text-sm text-gray-500 mt-4' href={`/profile/${service.seller.id}`}>
-                  Job handle by <span className='text-indigo-600'>{service.seller.handle}</span>
+                  Job handle by <span className='text-il-lightgreen-800'>{service.seller.handle}</span>
                 </Link>
               )}
               <div className='text-sm text-gray-500 mt-4'>
@@ -103,7 +103,9 @@ function ServiceDetail({ service }: { service: IService }) {
               <>
                 {!userProposal && (
                   <Link
-                    className='text-indigo-600 bg-indigo-50 hover:bg-indigo-500 hover:text-white px-5 py-2 rounded-lg'
+                    className={
+                      'border border-il-green-800 text-il-green-800 bg-il-lightgreen-200 hover:bg-il-green-main duration-100 px-5 py-2 rounded-lg'
+                    }
                     href={`/services/${service.id}/proposal`}>
                     Create proposal
                   </Link>

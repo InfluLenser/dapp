@@ -21,7 +21,10 @@ function Services() {
   return (
     <div className='max-w-7xl mx-auto text-gray-900 sm:px-4 lg:px-0'>
       <p className='text-5xl font-medium tracking-wider mb-8'>
-        All <span className='text-indigo-600'>Jobs </span>
+        All <span className='bg-clip-text text-transparent bg-gradient-to-r from-il-green-700 to-il-green-600'>Sponsorship Opportunities </span>
+      </p>
+      <p className='text-2xl font-medium tracking-wider mb-8'>
+      Ready for your next sponsored post gig? Earn money by posting about your favorite brands on Lens.
       </p>
       {searchQuery && services.length > 0 && (
         <p className='text-xl font-medium tracking-wider mb-8'>
@@ -48,8 +51,7 @@ function Services() {
         <div className='flex justify-center items-center gap-10 flex-col pb-5'>
           <button
             type='submit'
-            className={`px-5 py-2 mt-5 content-center border border-indigo-600 rounded-full text-indigo-600 
-              hover:text-white hover:bg-indigo-700
+            className={`px-5 py-2 mt-5 content-center border border-il-green-600 rounded-full text-il-green-700 hover:text-il-green-800 hover:bg-il-green-500 duration-100
             `}
             disabled={!hasMoreData}
             onClick={() => loadMore()}>

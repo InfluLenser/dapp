@@ -9,11 +9,11 @@ import {
 import SideLink from './SideLink';
 
 const navigation = [
-  { name: 'Presentation', href: '/', icon: HomeIcon, current: false },
-  { name: 'Your dashboard', href: '/dashboard', icon: PresentationChartBarIcon, current: true },
-  { name: 'Find jobs', href: '/services', icon: MagnifyingGlassIcon, current: false },
-  { name: 'Post a job', href: '/services/create', icon: PlusIcon, current: false },
-  { name: 'Find talents', href: '/talents', icon: SparklesIcon, current: false },
+  { name: 'Home', href: '/', icon: HomeIcon, current: false },
+  { name: 'Dashboard', href: '/dashboard', icon: PresentationChartBarIcon, current: true },
+  { name: 'Find Opportunities', href: '/services', icon: MagnifyingGlassIcon, current: false },
+  { name: 'Post Opportunities', href: '/services/create', icon: PlusIcon, current: false },
+  { name: 'Find InfluLENSers', href: '/talents', icon: SparklesIcon, current: false },
   { name: 'Messaging', href: '/messaging', icon: ChatBubbleLeftIcon, current: false },
 ];
 
@@ -22,7 +22,7 @@ function SideMenu() {
     <nav className='space-y-1 px-2'>
       {navigation.map(item => (
         <SideLink key={item.name} href={item.href}>
-          <item.icon className='mr-3 h-5 w-5 flex-shrink-0 text-indigo-300' aria-hidden='true' />
+          <item.icon className='mr-3 h-5 w-5 flex-shrink-0 text-il-green-800' aria-hidden='true' />
           {item.name}
         </SideLink>
       ))}

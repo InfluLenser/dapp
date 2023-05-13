@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import TalentLayerContext from '../context/talentLayer';
 import ConnectBlock from './ConnectBlock';
-import TalentLayerIdForm from './Form/TalentLayerIdForm';
+import TalentLayerIdForm from './Form/SearchForm';
 import Step from './Step';
 
 function Steps({ targetTitle }: { targetTitle: string }) {

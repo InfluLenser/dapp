@@ -4,10 +4,16 @@ function Logo() {
   return (
     <h1 className='text-2xl text-white'>
       <Link href='/'>
-        TL<span className='text-indigo-300'>indie</span>
+      <img
+          className=' rounded-full'
+          alt=''
+          src={'/images/logo-ln.webp'}      
+        />
       </Link>
     </h1>
   );
 }
 
 export default Logo;
+
+

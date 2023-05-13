@@ -1,13 +1,9 @@
-import CreateId from '../components/Home/CreateId';
-import SearchService from '../components/Home/SearchService';
-import SearchTalent from '../components/Home/SearchTalent';
+import SearchInflulenser from '../components/Home/SearchInflulenser';
 
 function Home() {
   return (
     <>
-      <CreateId />
-      <SearchService />
-      <SearchTalent />
+      <SearchInflulenser />
     </>
   );
 }

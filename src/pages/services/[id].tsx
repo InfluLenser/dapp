@@ -13,7 +13,7 @@ function Service() {
     <div className='max-w-7xl mx-auto text-gray-900 sm:px-4 lg:px-0'>
       <Back />
       <p className='text-5xl font-medium tracking-wider mb-8'>
-        Job <span className='text-indigo-600'>#{id}</span>
+        Job <span className='bg-clip-text text-transparent bg-gradient-to-r from-il-green-700 to-il-green-600'>#{id}</span>
       </p>
       {service ? <ServiceDetail service={service} /> : <Loading />}
     </div>

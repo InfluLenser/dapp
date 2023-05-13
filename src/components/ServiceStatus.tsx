@@ -22,8 +22,12 @@ function ServiceStatus({ status }: { status: ServiceStatusEnum }) {
 
   return (
     <span
-      className={`rounded-full px-2.5 py-1 text-xs font-medium bg-${color}-50 text-${color}-600`}>
-      {status}
+      className={`rounded-full px-2.5 py-1 text-xs font-medium ${
+        status === ServiceStatusEnum.Finished
+          ? 'bg-green-50 text-green-600'
+          : 'bg-yellow-50 text-yellow-600'
+      }`}>
+      {status == ServiceStatusEnum.Finished ? 'Done' : 'Pending'}
     </span>
   );
 }
