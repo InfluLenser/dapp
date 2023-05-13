@@ -21,7 +21,7 @@ function Services() {
   return (
     <div className='max-w-7xl mx-auto text-gray-900 sm:px-4 lg:px-0'>
       <p className='text-5xl font-medium tracking-wider mb-8'>
-        All <span className='text-il-green-600'>Sponsorship Opportunities </span>
+        All <span className='bg-clip-text text-transparent bg-gradient-to-r from-il-green-700 to-il-green-600'>Sponsorship Opportunities </span>
       </p>
       <p className='text-2xl font-medium tracking-wider mb-8'>
       Ready for your next sponsored post gig? Earn money by posting about your favorite brands on Lens.

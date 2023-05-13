@@ -60,6 +60,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Web3Modal
           projectId={`${process.env.NEXT_PUBLIC_WALLECT_CONNECT_PROJECT_ID}`}
           ethereumClient={ethereumClient}
+          accentColor='green'
         />
       </WagmiConfig>
     </>
