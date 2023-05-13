@@ -7,6 +7,7 @@ import { IUser } from '../types';
 import Loading from './Loading';
 import Stars from './Stars';
 import useLensUser from '../modules/Lens/hooks/useLensUsers';
+import LensModuleForItem from '../modules/Lens/LensModuleForItem';
 
 function UserItem({ user }: { user: IUser }) {
   const { user: currentUser } = useContext(TalentLayerContext);
@@ -41,6 +42,10 @@ function UserItem({ user }: { user: IUser }) {
               </div>
             </div>
             <Stars rating={Number(user.rating)} numReviews={user.userStats.numReceivedReviews} />
+
+            <div className='flex flex-row gap-4 justify-between items-center border-t border-gray-100 pt-4'>
+              <LensModuleForItem address={user.address} />
+            </div>
 
             <div className='flex flex-row gap-4 justify-end items-center'>
               <Link
