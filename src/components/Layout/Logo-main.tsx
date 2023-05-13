@@ -5,9 +5,9 @@ function Logo() {
     <h1 className='text-2xl text-white'>
       <Link href='/'>
       <img
-          className='object-contain h-48 w-96'
+          className=' rounded-full object-contain h-48 w-96'
           alt=''
-          src={'/images/logo-sq.webp'}      
+          src={'/images/logo-ln.webp'}      
         />
       </Link>
     </h1>
