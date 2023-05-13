@@ -5,7 +5,7 @@ function Logo() {
     <h1 className='text-2xl text-white'>
       <Link href='/'>
       <img
-          className=' rounded-full'
+          className=' rounded-full object-contain h-48 w-96'
           alt=''
           src={'/images/logo-ln.webp'}      
         />
