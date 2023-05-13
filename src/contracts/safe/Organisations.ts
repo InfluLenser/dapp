@@ -5,34 +5,11 @@ import { OperationType, SafeTransactionDataPartial } from '@safe-global/safe-cor
 
 // This file can be used to play around with the Safe Core SDK
 
-interface Config {
-  RPC_URL: string;
-  DEPLOYER_ADDRESS_PRIVATE_KEY: string;
-  DEPLOY_SAFE: {
-    OWNERS: string[];
-    THRESHOLD: number;
-    SALT_NONCE: string;
-  };
-}
-
-const config: Config = {
-  RPC_URL: 'https://goerli.infura.io/v3/<INFURA_KEY>',
-  DEPLOYER_ADDRESS_PRIVATE_KEY: '<DEPLOYER_PRIVATE_KEY>',
-  DEPLOY_SAFE: {
-    OWNERS: ['<OWNER_ADDRESS_1>', '<OWNER_ADDRESS_2>'],
-    THRESHOLD: 1, // <SAFE_THRESHOLD>
-    SALT_NONCE: '<SALT_NONCE_NUMBER>',
-  },
-};
-
-//TODO add default 1
 export async function deploySafe(
   members: string[],
   signer: ethers.Signer,
   threshold = 1,
 ): Promise<string | undefined> {
-  // const provider = new ethers.providers.JsonRpcProvider(config.RPC_URL);
-  // const deployerSigner = new ethers.Wallet(config.DEPLOYER_ADDRESS_PRIVATE_KEY, provider);
   if (!signer) return;
   // Create EthAdapter instance
   const ethAdapter = new EthersAdapter({
@@ -50,8 +27,7 @@ export async function deploySafe(
   };
 
   //TODO check if this is compulsory
-  const saltNonce = '054584';
-  // const saltNonce = config.DEPLOY_SAFE.SALT_NONCE;
+  const saltNonce = Date.now().toString();
 
   // Predict deployed address
   const predictedDeploySafeAddress = await safeFactory.predictSafeAddress(
@@ -72,7 +48,7 @@ export async function deploySafe(
     callback,
   });
 
-  console.log('Deployed Safe:', safe.getAddress());
+  console.log('Deployed Safe:', await safe.getAddress());
   return safe.getAddress();
 }
 
