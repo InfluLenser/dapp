@@ -1,9 +1,9 @@
 import { processRequest } from '../utils/graphql';
 
 export const getUsers = (
-  numberPerPage?: number,
-  offset?: number,
-  searchQuery?: string,
+    numberPerPage?: number,
+    offset?: number,
+    searchQuery?: string,
 ): Promise<any> => {
   const pagination = numberPerPage ? 'first: ' + numberPerPage + ', skip: ' + offset : '';
   let condition = ', where: {';
@@ -106,6 +106,17 @@ export const getUserTotalGains = (id: string): Promise<any> => {
             decimals
           }
         }
+      }
+    }
+    `;
+  return processRequest(query);
+};
+
+export const getUserIdsByAddresses = (addresses: string[]): Promise<any> => {
+  const query = `
+    {
+      users(where: {address_in: ["${addresses.map(a => a.toLowerCase()).join('","')}"]}) {
+        id
       }
     }
     `;

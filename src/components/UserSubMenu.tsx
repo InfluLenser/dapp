@@ -24,6 +24,19 @@ function UserSubMenu() {
           <button
             onClick={event => {
               event.preventDefault();
+              router.push('/organization/create');
+            }}
+            className={`block px-4 py-2 text-sm text-gray-700' ${active ? 'bg-gray-100' : ''}`}>
+            Create an Organization
+          </button>
+        )}
+      </Menu.Item>
+
+      <Menu.Item key='Log out'>
+        {({ active }) => (
+          <button
+            onClick={event => {
+              event.preventDefault();
               disconnect();
               router.push('/');
             }}
