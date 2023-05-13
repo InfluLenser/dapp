@@ -3,6 +3,7 @@ import { IService } from '../types';
 import { renderTokenAmountFromConfig } from '../utils/conversion';
 import { formatDate } from '../utils/dates';
 import Image from 'next/image';
+import LensModuleForItem from '../modules/Lens/LensModuleForItem';
 
 function ServiceItem({ service }: { service: IService }) {
   return (
@@ -46,6 +47,10 @@ function ServiceItem({ service }: { service: IService }) {
                     <strong>About:</strong> {service.description?.about}
                   </p>
                 </div>
+              </div>
+
+              <div className='flex flex-row gap-4 justify-between items-center border-t border-gray-100 pt-4'>
+                <LensModuleForItem service={service}/>
               </div>
 
               <div className='flex flex-row gap-4 justify-between items-center border-t border-gray-100 pt-4'>

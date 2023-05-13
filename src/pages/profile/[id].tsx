@@ -11,6 +11,8 @@ function Profile() {
   const { id } = router.query;
   const user = useUserById(id as string);
 
+  
+
   if (!user) {
     return <Loading />;
   }

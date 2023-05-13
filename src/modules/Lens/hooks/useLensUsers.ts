@@ -8,7 +8,9 @@ const useLensUser = (address: string): { lensUser: IlensUser | undefined } => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log(address);
         const response = await getLensProfileInfo(address);
+        console.log("Response", response);
 
         if (response?.data?.data?.defaultProfile) {
           setLensUser(response.data.data.defaultProfile);

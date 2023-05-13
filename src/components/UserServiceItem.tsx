@@ -4,6 +4,7 @@ import { IService, IUser, ServiceStatusEnum } from '../types';
 import { renderTokenAmountFromConfig } from '../utils/conversion';
 import { formatDate } from '../utils/dates';
 import ServiceStatus from './ServiceStatus';
+import LensModule from '../modules/Lens/LensModule';
 
 function UserServiceItem({ user, service }: { user: IUser; service: IService }) {
   const isBuyer = user?.id === service.buyer.id;

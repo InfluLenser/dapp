@@ -8,6 +8,7 @@ interface IProps {
 
 function LensModule({ address }: IProps) {
   const { lensUser } = useLensUser(address);
+  console.log("Profile address: ", address)
 
   if (!lensUser?.id) {
     return null;
