@@ -90,6 +90,7 @@ function CreateOrganizationForm({
 
           // const newId = '88';
           // const newId = '64';
+          //TODO newID undefined
           const newId = await createMultiStepsTransactionToast(
             {
               pending: 'Creating organization profile...',
@@ -100,6 +101,7 @@ function CreateOrganizationForm({
             mintTx,
             'user',
           );
+          console.log('newId', newId);
           const memberIds = await getMembersIds(values.members);
 
           // Create ipfs metaData
