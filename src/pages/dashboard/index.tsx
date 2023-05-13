@@ -12,18 +12,20 @@ import UserLensProfile from '../../modules/Lens/components/UserLensProfile';
 import useLensUser from '../../modules/Lens/hooks/useLensUsers';
 import LensModule from '../../modules/Lens/LensModule';
 
-
 function Dashboard() {
   const { account, user } = useContext(TalentLayerContext);
 
-  if(!user) return
+  if (!user) return;
   const { lensUser } = useLensUser(user.address);
   //const { lensFeed } = UserLensFeed(user.address);
 
   return (
     <div className='max-w-7xl mx-auto text-gray-900 sm:px-4 lg:px-0'>
       <p className='text-5xl font-medium tracking-wider mb-8'>
-        Personal <span className='bg-clip-text text-transparent bg-gradient-to-r from-il-green-800 to-il-green-600'>dashboard</span>
+        Personal{' '}
+        <span className='bg-clip-text text-transparent bg-gradient-to-r from-il-green-800 to-il-green-600'>
+          dashboard
+        </span>
       </p>
 
       <Steps targetTitle={'Access your dashboard'} />
@@ -36,9 +38,11 @@ function Dashboard() {
             </h2>
             <UserDetail user={user} />
           </div>
-          {lensUser && <div className='md:w-1/2 xl:w-1/3 mb-6'>
-            <UserLensProfile lensUser={lensUser} />
-          </div>}
+          {lensUser && (
+            <div className='md:w-1/2 xl:w-1/3 mb-6'>
+              <UserLensProfile lensUser={lensUser} />
+            </div>
+          )}
           <div className='mb-6'>
             <UserPayments user={user} />
           </div>
