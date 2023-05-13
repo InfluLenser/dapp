@@ -2,12 +2,18 @@ import Link from 'next/link';
 
 function Logo() {
   return (
-    <h1 className='text-2xl text-il-green-600'>
+    <h1 className='text-2xl text-white'>
       <Link href='/'>
-        Influ<span className='text-il-green-900'>Lenser</span>
+      <img
+          className=' rounded-full'
+          alt=''
+          src={'/images/logo-ln.webp'}      
+        />
       </Link>
     </h1>
   );
 }
 
 export default Logo;
+
+
