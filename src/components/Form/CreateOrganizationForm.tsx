@@ -7,14 +7,19 @@ import * as Yup from 'yup';
 import { config } from '../../config';
 import TalentLayerContext from '../../context/talentLayer';
 import TalentLayerID from '../../contracts/ABI/TalentLayerID.json';
-import { createTransactionToast, showErrorTransactionToast } from '../../utils/toast';
+import {
+  createMultiStepsTransactionToast,
+  createTransactionToast,
+  showErrorTransactionToast,
+} from '../../utils/toast';
 import Loading from '../Loading';
 import SubmitButton from './SubmitButton';
 import { useRouter } from 'next/router';
-import { proposeSafeTransaction } from '../../contracts/safe/Organisations';
+import { deploySafe, proposeSafeTransaction } from '../../contracts/safe/Organisations';
 import { getUserIdsByAddresses } from '../../queries/users';
 import { generateSelector } from '../../utils/web3';
 import { IUser } from '../../types';
+import { postToIPFS } from '../../utils/ipfs';
 
 interface IFormValues {
   handle?: string;
@@ -60,51 +65,54 @@ function CreateOrganizationForm({ callback }: { callback?: () => void }) {
         const handlePrice = await contract.getHandlePrice(values.handle);
 
         // Create Multisig Safe
-        const safeAddress = '0x1ea68C3A0e1F328343fFF5f16528B297DEa4E4dB';
-        // const safeAddress = await deploySafe(values.members, signer, 1);
+        // const safeAddress = '0x1ea68C3A0e1F328343fFF5f16528B297DEa4E4dB';
+        const safeAddress = await deploySafe(values.members, signer, 1);
 
         if (safeAddress) {
           // TODO Fund the safe
 
           // Mint ID for organization
-          // const mintTx = await contract.mintForAddress(
-          //   safeAddress,
-          //   process.env.NEXT_PUBLIC_PLATFORM_ID,
-          //   values.handle,
-          //   {
-          //     value: handlePrice,
-          //   },
-          // );
-          //
-          const newId = '88';
-          // const newId = await createMultiStepsTransactionToast(
-          //   {
-          //     pending: 'Creating organization profile...',
-          //     success: 'Congrats! Your organization has been created',
-          //     error: 'An error occurred while creating your organization',
-          //   },
-          //   provider,
-          //   mintTx,
-          //   'user',
-          // );
+          const mintTx = await contract.mintForAddress(
+            safeAddress,
+            process.env.NEXT_PUBLIC_PLATFORM_ID,
+            values.handle,
+            {
+              value: handlePrice,
+            },
+          );
+
+          // const newId = '88';
+          // const newId = '64';
+          const newId = await createMultiStepsTransactionToast(
+            {
+              pending: 'Creating organization profile...',
+              success: 'Congrats! Your organization has been created',
+              error: 'An error occurred while creating your organization',
+            },
+            provider,
+            mintTx,
+            'user',
+          );
           const memberIds = await getMembersIds(values.members);
 
           // Create ipfs metaData
-          const cid = 'QmWuF9qodtLgP4e6dbQLESiBpotqMyqCRoTMW7CeQaC9qT';
-          // const cid = await postToIPFS(
-          //   JSON.stringify({
-          //     // title: values.title,
-          //     // role: values.role,
-          //     // image_url: values.image_url,
-          //     // video_url: values.video_url,
-          //     // name: values.name,
-          //     // about: values.about,
-          //     // skills: values.skills,
-          //     // TOTO get user ids here
-          //     members: memberIds,
-          //   }),
-          // );
+          // const cid = 'QmWuF9qodtLgP4e6dbQLESiBpotqMyqCRoTMW7CeQaC9qT';
+          const cid = await postToIPFS(
+            JSON.stringify({
+              //     // title: values.title,
+              //     // role: values.role,
+              //     // image_url: values.image_url,
+              //     // video_url: values.video_url,
+              //     // name: values.name,
+              //     // about: values.about,
+              //     // skills: values.skills,
+              //     // TOTO get user ids here
+              members: memberIds,
+            }),
+          );
           console.log('cid', cid);
+
+          await contract.updateProfileData(user.id, cid);
 
           // Update metaData using multisig
           const functionSelector = generateSelector(
@@ -132,7 +140,7 @@ function CreateOrganizationForm({ callback }: { callback?: () => void }) {
 
           // Then redirect to organization dashboard
           if (newId) {
-            router.push('/organizations/edit' + newId);
+            router.push('/organizations/edit/' + newId);
           }
         }
 
