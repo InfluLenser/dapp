@@ -19,7 +19,7 @@ function UserSubMenu() {
         )}
       </Menu.Item>
 
-      <Menu.Item key='Log out'>
+      <Menu.Item key='Create Org'>
         {({ active }) => (
           <button
             onClick={event => {
