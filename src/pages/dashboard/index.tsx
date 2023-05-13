@@ -23,11 +23,7 @@ function Dashboard() {
   return (
     <div className='max-w-7xl mx-auto text-gray-900 sm:px-4 lg:px-0'>
       <p className='text-5xl font-medium tracking-wider mb-8'>
-<<<<<<< HEAD
-        My <span className='text-il-green-600'>Dashboard</span>
-=======
         Personal <span className='bg-clip-text text-transparent bg-gradient-to-r from-il-green-800 to-il-green-600'>dashboard</span>
->>>>>>> 624fa6a674a1f1ce5b0f08d0d690fb4f45d65423
       </p>
 
       <Steps targetTitle={'Access your dashboard'} />

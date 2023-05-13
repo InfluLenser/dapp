@@ -11,8 +11,8 @@ import SideLink from './SideLink';
 const navigation = [
   { name: 'Home', href: '/', icon: HomeIcon, current: false },
   { name: 'Dashboard', href: '/dashboard', icon: PresentationChartBarIcon, current: true },
-  { name: 'Find Sponsorships', href: '/services', icon: MagnifyingGlassIcon, current: false },
-  { name: 'Post Opportunities', href: '/services/create', icon: PlusIcon, current: false },
+  { name: 'Find Opportunities', href: '/opportunities', icon: MagnifyingGlassIcon, current: false },
+  { name: 'Post Opportunities', href: '/opportunities/create', icon: PlusIcon, current: false },
   { name: 'Find InfluLENSers', href: '/talents', icon: SparklesIcon, current: false },
   { name: 'Messaging', href: '/messaging', icon: ChatBubbleLeftIcon, current: false },
 ];
