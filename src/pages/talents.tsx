@@ -5,7 +5,7 @@ import UserItem from '../components/UserItem';
 import useUsers from '../hooks/useUsers';
 
 function Talents() {
-  const PAGE_SIZE = 36;
+  const PAGE_SIZE = 300;
   const router = useRouter();
   const query = router.query;
   const searchQuery = query.search as string;
@@ -17,12 +17,15 @@ function Talents() {
   return (
     <div className='max-w-7xl mx-auto text-gray-900 sm:px-4 lg:px-0'>
       <p className='text-5xl font-medium tracking-wider mb-8'>
-        Find <span className='bg-clip-text text-transparent bg-gradient-to-r from-il-green-700 to-il-green-600'>InfluLENSers </span>
+        Find{' '}
+        <span className='bg-clip-text text-transparent bg-gradient-to-r from-il-green-700 to-il-green-600'>
+          InfluLENSers{' '}
+        </span>
       </p>
       <p className='text-2xl font-medium tracking-wider mb-8'>
-      Ready to find the next social media star ⭐ to help spread the word about your awesome product 😎? Search for influLENSers and view their profiles here.
+        Ready to find the next social media star ⭐ to help spread the word about your awesome
+        product 😎? Search for influLENSers and view their profiles here.
       </p>
-
 
       {searchQuery && users.length > 0 && (
         <p className='text-xl font-medium tracking-wider mb-8'>
