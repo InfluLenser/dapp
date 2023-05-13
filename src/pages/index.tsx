@@ -259,13 +259,13 @@ function Home() {
 <section className="text-gray-700 body-font border-t border-gray-200">
   <div className="container px-5 py-24 mx-auto flex flex-wrap">
     <div className="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
-    <img className="object-cover object-center rounded" alt="hero" src="images/code.png"></img>
+    <img className="object-cover object-center rounded" alt="hero" src="images/influencer-4.webp"></img>
     </div>
     <div className="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center">
       <div className="flex flex-col mb-10 lg:items-start items-center">
         <div className="flex-grow">
           <h2 className="text-gray-900 text-5xl title-font font-medium mb-3">View on Github</h2>
-          <p className="leading-relaxed text-base">Our code is fully open-source and we'd love your feedback! Find us on Github.</p>
+          <p className="text-3xl leading-relaxed text-base">Our code is fully open-source and we'd love your feedback! Find us on Github.</p>
           <button className="flex mx-auto mt-16 text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg">Let's Go</button>
         </div>
       </div>
