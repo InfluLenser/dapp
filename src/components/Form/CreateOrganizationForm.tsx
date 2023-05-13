@@ -1,7 +1,7 @@
 import { useWeb3Modal } from '@web3modal/react';
 import { ethers } from 'ethers';
 import { ErrorMessage, Field, Form, Formik, FieldArray } from 'formik';
-import { useContext } from 'react';
+import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
 import { config } from '../../config';
@@ -20,6 +20,7 @@ import { getUserIdsByAddresses } from '../../queries/users';
 import { generateSelector } from '../../utils/web3';
 import { IUser } from '../../types';
 import { postToIPFS } from '../../utils/ipfs';
+import Congrats from '../Congrats';
 
 interface IFormValues {
   handle?: string;
@@ -31,7 +32,13 @@ const validationSchema = Yup.object({
   members: Yup.array().of(Yup.string().required('Member is required')),
 });
 
-function CreateOrganizationForm({ callback }: { callback?: () => void }) {
+function CreateOrganizationForm({
+  congrats,
+  setCongrats,
+}: {
+  congrats?: boolean;
+  setCongrats: Dispatch<SetStateAction<boolean>>;
+}) {
   const { open: openConnectModal } = useWeb3Modal();
   const { user } = useContext(TalentLayerContext);
   const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
@@ -135,12 +142,13 @@ function CreateOrganizationForm({ callback }: { callback?: () => void }) {
           if (updateTx) {
             createTransactionToast('Your safe transaction has been proposed', updateTx);
           } else {
-            throw new Error('Transaction failed');
+            console.error('Transaction failed');
           }
 
           // Then redirect to organization dashboard
           if (newId) {
-            router.push('/organizations/edit/' + newId);
+            // router.push('/organizations/edit/' + newId);
+            setCongrats(true);
           }
         }
 
