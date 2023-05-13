@@ -9,7 +9,7 @@ function EditProfile() {
   return (
     <div className='max-w-7xl mx-auto text-gray-900 sm:px-4 lg:px-0'>
       <p className='text-5xl font-medium tracking-wider mb-8'>
-        Edit your <span className='text-il-green-600'>Profile</span>
+        Edit your <span className='bg-clip-text text-transparent bg-gradient-to-r from-il-green-800 to-il-green-600'>profile</span>
       </p>
 
       <Steps targetTitle={'Edit your profile'} />

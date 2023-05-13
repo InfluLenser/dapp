@@ -228,7 +228,7 @@ function CreateOrganizationForm({ callback }: { callback?: () => void }) {
                     ))}
                   <button
                     type='button'
-                    className='mt-5 px-5 py-2 border border-indigo-400 rounded-md hover:text-indigo-600 hover:bg-white text-white bg-indigo-400'
+                    className='mt-5 px-5 py-2 rounded-md hover:bg-il-green-main text-il-green-800 bg-il-green-200 duration-100'
                     onClick={() => {
                       console.log('values', values);
                       push('');

@@ -49,8 +49,7 @@ function Talents() {
         <div className='flex justify-center items-center gap-10 flex-col pb-5'>
           <button
             type='submit'
-            className={`px-5 py-2 mt-5 content-center border border-tl-green-600 rounded-full text-tl-green-600 
-              hover:text-white hover:bg-tl-green-700
+            className={`px-5 py-2 mt-5 content-center border border-il-green-600 rounded-full text-il-green-700 hover:text-il-green-800 hover:bg-il-green-500 duration-100
             `}
             disabled={!hasMoreData}
             onClick={() => loadMore()}>

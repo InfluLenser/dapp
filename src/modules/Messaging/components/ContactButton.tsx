@@ -6,7 +6,7 @@ function ContactButton({ userAddress, userHandle }: { userAddress: string; userH
 
   return (
     <button
-      className='text-indigo-600 bg-indigo-50 hover:bg-indigo-500 hover:text-white px-5 py-2 rounded-lg'
+      className='border border-il-green-800 text-il-green-800 bg-il-lightgreen-200 hover:bg-il-green-main duration-100 px-5 py-2 rounded-lg'
       onClick={() => {
         handleMessageUser(userAddress);
       }}>
