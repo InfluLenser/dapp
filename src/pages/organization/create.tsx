@@ -7,7 +7,7 @@ import Congrats from '../../components/Congrats';
 
 function CreateOrganization() {
   const { account, user } = useContext(TalentLayerContext);
-  const [congrats, setCongrats] = useState(true);
+  const [congrats, setCongrats] = useState(false);
 
   return (
     <>

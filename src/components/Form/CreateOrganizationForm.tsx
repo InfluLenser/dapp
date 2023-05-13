@@ -212,13 +212,14 @@ function CreateOrganizationForm({
                           <span className='text-red-500'>
                             <ErrorMessage name='about' />
                           </span>
+                          
                         </div>
                         {/*Reposition X*/}
-                        <div className='items-center justify-center justify-end'>
-                          <button
+
+                        <button
                             onClick={() => remove(index)}
                             type='button'
-                            className='ml-4 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center '
+                            className='mt-6 ml-4 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center '
                             data-modal-toggle='defaultModal'>
                             <svg
                               className='w-5 h-5'
@@ -231,7 +232,6 @@ function CreateOrganizationForm({
                                 clipRule='evenodd'></path>
                             </svg>
                           </button>
-                        </div>
                       </div>
                     ))}
                   <button
