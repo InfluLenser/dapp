@@ -60,7 +60,7 @@ function PostForm({ callback }: { callback?: () => void }) {
         onSubmit={onSubmit}
         validationSchema={validationSchema}>
         {({ isSubmitting }) => {
-          const { values } = useFormikContext();
+          // const { values } = useFormikContext();
           return (
             <Form>
               <div className='grid grid-cols-1 gap-6 border border-gray-200 rounded-md p-8'>
@@ -83,7 +83,7 @@ function PostForm({ callback }: { callback?: () => void }) {
             bg-il-lightgreen-200
             hover:bg-il-green-main
             duration-100 px-5 py-2 rounded-lg'
-                    href={`https://testnet.lenster.xyz/?text=${}&url=https://mycoolapp.xyz&via=MyCoolApp&hashtags=lens,web3`}
+                    href={`https://testnet.lenster.xyz/?text=${'Text to be posted'}&url=https://mycoolapp.xyz&via=MyCoolApp&hashtags=lens,web3`}
                     target='_blank'>
                     Post
                   </Link>
