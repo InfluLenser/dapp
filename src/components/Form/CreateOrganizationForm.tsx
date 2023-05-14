@@ -1,7 +1,7 @@
 import { useWeb3Modal } from '@web3modal/react';
 import { ethers } from 'ethers';
 import { ErrorMessage, Field, Form, Formik, FieldArray } from 'formik';
-import { useContext } from 'react';
+import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import { useProvider, useSigner } from 'wagmi';
 import * as Yup from 'yup';
 import { config } from '../../config';
@@ -20,6 +20,7 @@ import { getUserIdsByAddresses } from '../../queries/users';
 import { generateSelector } from '../../utils/web3';
 import { IUser } from '../../types';
 import { postToIPFS } from '../../utils/ipfs';
+import Congrats from '../Congrats';
 
 interface IFormValues {
   handle?: string;
@@ -31,7 +32,13 @@ const validationSchema = Yup.object({
   members: Yup.array().of(Yup.string().required('Member is required')),
 });
 
-function CreateOrganizationForm({ callback }: { callback?: () => void }) {
+function CreateOrganizationForm({
+  congrats,
+  setCongrats,
+}: {
+  congrats?: boolean;
+  setCongrats: Dispatch<SetStateAction<boolean>>;
+}) {
   const { open: openConnectModal } = useWeb3Modal();
   const { user } = useContext(TalentLayerContext);
   const provider = useProvider({ chainId: parseInt(process.env.NEXT_PUBLIC_NETWORK_ID as string) });
@@ -83,6 +90,7 @@ function CreateOrganizationForm({ callback }: { callback?: () => void }) {
 
           // const newId = '88';
           // const newId = '64';
+          //TODO newID undefined
           const newId = await createMultiStepsTransactionToast(
             {
               pending: 'Creating organization profile...',
@@ -93,6 +101,7 @@ function CreateOrganizationForm({ callback }: { callback?: () => void }) {
             mintTx,
             'user',
           );
+          console.log('newId', newId);
           const memberIds = await getMembersIds(values.members);
 
           // Create ipfs metaData
@@ -111,8 +120,6 @@ function CreateOrganizationForm({ callback }: { callback?: () => void }) {
             }),
           );
           console.log('cid', cid);
-
-          await contract.updateProfileData(user.id, cid);
 
           // Update metaData using multisig
           const functionSelector = generateSelector(
@@ -135,12 +142,13 @@ function CreateOrganizationForm({ callback }: { callback?: () => void }) {
           if (updateTx) {
             createTransactionToast('Your safe transaction has been proposed', updateTx);
           } else {
-            throw new Error('Transaction failed');
+            console.error('Transaction failed');
           }
 
           // Then redirect to organization dashboard
           if (newId) {
-            router.push('/organizations/edit/' + newId);
+            // router.push('/organizations/edit/' + newId);
+            setCongrats(true);
           }
         }
 
@@ -206,24 +214,23 @@ function CreateOrganizationForm({ callback }: { callback?: () => void }) {
                           </span>
                         </div>
                         {/*Reposition X*/}
-                        <div className='items-center justify-center justify-end'>
-                          <button
-                            onClick={() => remove(index)}
-                            type='button'
-                            className='ml-4 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center '
-                            data-modal-toggle='defaultModal'>
-                            <svg
-                              className='w-5 h-5'
-                              fill='currentColor'
-                              viewBox='0 0 20 20'
-                              xmlns='http://www.w3.org/2000/svg'>
-                              <path
-                                fillRule='evenodd'
-                                d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-                                clipRule='evenodd'></path>
-                            </svg>
-                          </button>
-                        </div>
+
+                        <button
+                          onClick={() => remove(index)}
+                          type='button'
+                          className='mt-6 ml-4 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center '
+                          data-modal-toggle='defaultModal'>
+                          <svg
+                            className='w-5 h-5'
+                            fill='currentColor'
+                            viewBox='0 0 20 20'
+                            xmlns='http://www.w3.org/2000/svg'>
+                            <path
+                              fillRule='evenodd'
+                              d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
+                              clipRule='evenodd'></path>
+                          </svg>
+                        </button>
                       </div>
                     ))}
                   <button

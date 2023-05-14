@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { IService, IUser, ServiceStatusEnum } from '../types';
-import { renderTokenAmountFromConfig } from '../utils/conversion';
 import { formatDate } from '../utils/dates';
 import ServiceStatus from './ServiceStatus';
 import { useState } from 'react';

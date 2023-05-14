@@ -7,6 +7,7 @@ import { IUser } from '../types';
 import Loading from './Loading';
 import Stars from './Stars';
 import useLensUser from '../modules/Lens/hooks/useLensUsers';
+import LensModuleForItem from '../modules/Lens/LensModuleForItem';
 
 function UserItem({ user }: { user: IUser }) {
   const { user: currentUser } = useContext(TalentLayerContext);
@@ -32,12 +33,19 @@ function UserItem({ user }: { user: IUser }) {
                   alt='default avatar'
                 />
                 <div className='flex flex-col'>
-                  <p className='text-gray-900 font-medium break-all'>{user.handle}</p>
+                  <p className='text-gray-900 font-medium break-all'>
+                    {lensUser.handle.substring(0, lensUser.handle.length - 4)}
+                    lens
+                  </p>
                   <p className='text-xs text-gray-500'>{userDescription?.title || '-'}</p>
                 </div>
               </div>
             </div>
             <Stars rating={Number(user.rating)} numReviews={user.userStats.numReceivedReviews} />
+
+            <div className='flex flex-row gap-4 justify-between items-center border-t border-gray-100 pt-4'>
+              <LensModuleForItem address={user.address} />
+            </div>
 
             <div className='flex flex-row gap-4 justify-end items-center'>
               <Link
